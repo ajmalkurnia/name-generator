@@ -1,0 +1,14 @@
+.env.prod
+__pycache__
+
+trained_models/*
+!trained_models/.keep
+
+data/*
+!data/.keep
+script/*
+!script/.keep
+
+static/.webassets-cache/*
+static/dist/*
+!static/dist/.keep

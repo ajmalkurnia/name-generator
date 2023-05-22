@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box
+}
+
+body {
+  /* font-family: !important; */
+  font-family: "Open Sans", sans-serif;
+  color: hsl(210, 20%, 96%);
+  background-color: hsl(210, 15%, 5%);
+  margin: 0;
+  transition: color 0.2s ease-in;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-top: 10%;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+button {
+  align-items: center;
+  background: hsl(210, 20%, 96%);
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: hsl(210, 15%, 5%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+button:hover {
+  background: hsl(210, 20%, 76%);
+}
+
+input[type="range"] {
+  margin-right: 15px;
+  height: 7px;
+  background: hsl(210, 15%, 10%);
+  border-radius: 5px;
+  background-image: linear-gradient(hsl(210, 20%, 50%), hsl(210, 20%, 50%));
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+input[type=range]::-moz-range-track {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  height: 10px;
+  width: 10px;
+  background: hsl(210, 20%, 96%);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  background: hsl(210, 20%, 96%);
+  cursor: ew-resize;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: hsl(210, 20%, 76%);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: hsl(210, 20%, 76%);
+}
+
+.title h1 {
+  /* margin: 0; */
+  font-size: 54px;
+  font-weight: 100;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.output-content {
+  width: inherit;
+  display: flex;
+  margin: 10px;
+  background-color: hsl(210, 15%, 10%);
+  transition: background-color .2s ease-out;
+}
+
+.copy-button {
+  right: 0;
+  width: 50px;
+}
+
+.copy-button .copy-tooltip {
+  visibility: hidden;
+  width: 100px;
+  background-color: hsl(210, 15%, 10%);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 70%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.copy-button .copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: hsl(210, 15%, 10%) transparent transparent transparent;
+}
+
+/* .text-box {} */
+.generated-text {
+  text-align: center;
+  padding-left: 5%;
+  width: 100%;
+  letter-spacing: .1rem;
+  transition: all 0.2s ease;
+}
+
+#moreOption {
+  transition: height 0.2s ease;
+  overflow: hidden;
+  height: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#moreOption > label {
+  margin: 0.25rem;
+}
+
+#moreOption > label > input{
+  flex: auto;
+  margin-left: 10px;
+}
+
+#moreOption > label > output{
+  width: 1rem;
+}
+
+#optionButton {
+  background: none;
+  color: hsl(210, 20%, 96%);
+}
+
+.history {
+  width: 50%;
+}
+
+.history h2 {
+  text-align: center;
+}
+
+#historyName li{
+  display: flex;
+  margin: 10px 0px;
+}
+
+.generate-button {
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+}
+
+#historyName li:before{
+  content: "";
+  position: relative;
+  top: 18px;
+  border-radius: 50%;
+  left: -1rem;
+  width: 5px;
+  height: 5px;
+  background: hsl(210, 20%, 96%);
+}
+
+#historyName li p {
+  width: 88%;
+  margin: inherit;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsl(210, 15%, 10%);
+  height: 50px;
+}
+
+footer > p {
+  margin: auto;
+  text-align: center;
+}
+
+.ic-copy:before {
+  content: "\e925";
+}
+
+[class^="ic-"]:before,
+[class*=" ic-"]:before {
+  font-family: "icon";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'icon';
+  src: url('/static/fonts/icon.woff?so5flz') format('woff');
+}
+
+.loader {
+  left: 10px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: relative;
+  visibility: hidden;
+  animation: rotate 1s linear infinite
+}
+
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
+}
+
+
+@media (max-width: 768px) {
+  .history {
+    width: auto;
+  }
+  #moreOption {
+    width: auto;
+  }
+}

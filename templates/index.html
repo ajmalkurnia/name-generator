@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <title>Generator Nama</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    
+    <!-- Load Favicon -->
+    <!-- Load Font -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway:300..500" rel="stylesheet">
+    
+    <!-- Load custom css -->
+    {% assets 'css' %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}</head>
+
+<body>
+    <main>
+        <section class="title">
+            <h1>Generate Nama</h1>
+        </section>
+        <section class="content">
+            <div class="output-content">
+                <p id="name" class="generated-text">________________</p>
+                <button class="copy-button"><span class="ic-copy"></span><span class="copy-tooltip">Copy berhasil !</span></button>
+            </div>
+            <div>
+                <button id="optionButton" class="adv-reveal" type="button">+ Opsi Lain</button>
+            </div>
+            <div id="moreOption" class="advanced-option">
+                <label for="seed" title="Generate nama yang dimulai dengan ...">
+                    <span>Awalan nama:</span>
+                    <input type="text" id="seed" name="seed">
+                </label>
+                <label for="maxCharacter" title="Maksimum karakter dari nama yang di-generate (termasuk spasi), Nama yang digenerate mungkin lebih pendek dari jumlah maksimum karakter">
+                    <span>Maks. karakter: </span>
+                    <input type="range" id="maxCharacter" name="maxCharacter"
+                    min="1" max="50" value="16" oninput="char.value = this.value">
+                    <output id="char">16</output>
+                </label>
+                <label for="maxWord" title="Maksimum jumlah kata dari nama">
+                    <span>Maks. Kata: </span>
+                    <input type="range" id="maxWord" name="maxWord"
+                    min="1" max="5" value="2" oninput="word.value = this.value">
+                    <output id="word">2</output>
+                </label>
+            </div>
+            <div>
+                <div class="generate-button">
+                    <button id="generateButton">Generate !</button>
+                    <span class="loader"></span>
+                </div>
+                <p>*Proses pertama kali mungkin akan lebih lama</p>
+            </div>
+
+        </section>
+        <section class="history">
+            <h2>Nama Sebelumnya</h2>
+            <ul id="historyName">
+            </ul>
+
+        </section>
+    </main>
+    <footer>
+        <p>Ajmal Kurnia, 2022</p>
+    </footer>
+    {% assets 'js' %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+</body>
+
+</html>
