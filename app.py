@@ -18,8 +18,13 @@ assets.register("css", css)
 assets.register("js", js)  # new
 css.build()
 js.build()  # new
-model = MarkovGenerator.load(os.environ["MODEL_PATH"])
-
+model_path = os.environ.get("MODEL_PATH", None)
+if model_path:
+    model = MarkovGenerator.load(
+        model_path, os.environ.get("MODEL_BUCKET_NAME", "")
+    )
+else:
+    raise KeyError("MODEL_PATH not found")
 
 @limiter.flask_limit.request_filter
 def header_whitelist():

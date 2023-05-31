@@ -8,6 +8,9 @@ from collections import defaultdict, Counter
 from itertools import product
 import gzip
 
+from google.cloud import storage
+
+
 class MarkovGenerator:
   def __init__(self, n):
     self.n = n
@@ -126,13 +129,11 @@ class MarkovGenerator:
       pickle.dump(param_to_save, f)
 
   @staticmethod
-  def load(fname):
-    try:
-      with open(fname, "rb") as f:
-        data = pickle.load(f)
-    except pickle.UnpicklingError:
-      with gzip.open(fname, "rb") as f:
-        data = pickle.load(f)
+  def load(fname, bucket_name=""):
+    if bucket_name:
+      data = _open_gcs(fname, bucket_name)
+    else:
+      data = _open_file(fname)
     markov = MarkovGenerator(data["n"])
     markov.ngram = data["model"]
     markov.vocab = data["vocab"]
@@ -141,3 +142,21 @@ class MarkovGenerator:
     markov.i2v = data["i2v"]
     markov.g2i = data["g2i"]
     return markov
+
+
+def _open_file(fname):
+  try:
+    with open(fname, "rb") as f:
+      return pickle.load(f)
+  except pickle.UnpicklingError:
+    with gzip.open(fname, "rb") as f:
+      return pickle.load(f)
+  
+
+def _open_gcs(fname, bucket_name):
+  client = storage.Client()
+  bucket = client.get_bucket(bucket_name)
+  fblob = bucket.get_blob(fname)
+  with fblob.open("rb") as f:
+    content = gzip.GzipFile(fileobj=f).read()
+    return pickle.loads(content)
