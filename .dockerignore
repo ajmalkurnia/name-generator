@@ -11,6 +11,6 @@ data/**
 script/**
 
 .env
-.env.prod
+.env*
 
 trained_models/
